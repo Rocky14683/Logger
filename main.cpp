@@ -104,16 +104,12 @@ std::string get_chunk() {
 #define KEYWORD_STRCAT(x, y) x##y
 
 std::string current_time_to_string() {
-    // Get the current time as a time_point
     auto now = std::chrono::system_clock::now();
 
-    // Convert to a time_t, which is easier to work with for formatting
     std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
 
-    // Convert to a tm struct for custom formatting
     std::tm now_tm = *std::localtime(&now_time_t);
 
-    // Use a stringstream to format the time as a string
     std::ostringstream oss;
     oss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");
 
